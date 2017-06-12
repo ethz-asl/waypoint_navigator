@@ -6,6 +6,8 @@ This repository contains high-level waypoint-following for micro aerial vehicles
 GPS/ENU co-ordinates are accepted as input destinations, and an illustrative example is provided in the [RotorS](https://github.com/ethz-asl/rotors_simulator/wiki) simulator.
 This README provides a brief overview of the package and its utilities.
 
+Please feel free to contact us in case of questions, feedback, or feature ideas. We would love to hear your feedback in order to improve this package.
+
 **Authors**: Marija Popović, Enric Galceran, Raghav Khanna, Inkyu Sa
 **Maintainer**: Marija Popović, mpopovic@ethz.ch  
 **Affiliation**: Autonomous Systems Lab, ETH Zurich
@@ -89,20 +91,18 @@ catkin_build
 The primary function of this package is to read a path (list of waypoints) from a .yaml file, and send commands to execute it to a [Model Predictive Controller](https://github.com/ethz-asl/mav_control_rw) (MPC). The file also contains parameters for trajectory generation (reference speed, reference acceleration, etc.) and other services (take-off height, landing height, etc.). The intermediate_pose_separation parameter, which specifies the maximum allowable distance between waypoints in the trajectory, causing intermediate points to be interpolated. Template examples of trajectories are `trajectory_simple_enu.yaml` and `trajectory_simple_gps.yaml`.
 
 
-The coordinates .yaml file should read as an array of floating-point numbers, separated by commas and spaces. There are two options:
+The coordinates ``.yaml`` file should read as an array of floating-point numbers, separated by commas and spaces. There are two options:
 
 1. ENU points (`coordinate_type = 'enu'`):
- * Array format: [x (East), y (North), z (Up), height (above starting point), yaw angle (wrt. East)]
+  Array format: [x (East), y (North), z (Up), height (above starting point), yaw angle (wrt. East)]
 
 2. GPS points (`coordinate_type = 'gps'`):
- * Array format: [Latitude, longitude, height (above initial reference), yaw angle (wrt. East)]
+  Array format: [Latitude, longitude, height (above initial reference), yaw angle (wrt. East)]
  
 The trajectory can be sent to the controller using one of two methods:
 
-1. Command poses (`path_mode = poses`)
- * Commands to the controller are published on a pose-by-pose basis.
-2. Command polynomial trajectory (`path_mode = polynomial`)
- * The segments of a [smooth polynomial trajectory](git@github.com:ethz-asl/mav_trajectory_generation.git) are sampled and sent to the controller.
+1. Command poses (`path_mode = poses`): commands to the controller are published on a pose-by-pose basis.
+2. Command polynomial trajectory (`path_mode = polynomial`): the segments of a [smooth polynomial trajectory](git@github.com:ethz-asl/mav_trajectory_generation.git) are sampled and sent to the controller.
  
 ## Instructions
 
