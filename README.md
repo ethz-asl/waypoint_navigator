@@ -93,16 +93,16 @@ The primary function of this package is to read a path (list of waypoints) from 
 
 The coordinates ``.yaml`` file should read as an array of floating-point numbers, separated by commas and spaces. There are two options:
 
-1. ENU points (`coordinate_type = 'enu'`):
+1. **ENU points** (`coordinate_type = 'enu'`):
   Array format: [x (East), y (North), z (Up), height (above starting point), yaw angle (wrt. East)]
 
-2. GPS points (`coordinate_type = 'gps'`):
+2. **GPS points** (`coordinate_type = 'gps'`):
   Array format: [Latitude, longitude, height (above initial reference), yaw angle (wrt. East)]
  
 The trajectory can be sent to the controller using one of two methods:
 
-1. Command poses (`path_mode = poses`): commands to the controller are published on a pose-by-pose basis.
-2. Command polynomial trajectory (`path_mode = polynomial`): the segments of a [smooth polynomial trajectory](git@github.com:ethz-asl/mav_trajectory_generation.git) are sampled and sent to the controller.
+1. **Command poses** (`path_mode = poses`): commands to the controller are published on a pose-by-pose basis.
+2. **Command polynomial trajectory** (`path_mode = polynomial`): the segments of a [smooth polynomial trajectory](git@github.com:ethz-asl/mav_trajectory_generation.git) are sampled and sent to the controller.
  
 ## Instructions
 
@@ -154,7 +154,7 @@ Example visualization of a partially executed serpentine GPS trajectory on a sug
 
 ![](http://i68.tinypic.com/301hrht.png)
 
-## Example application
+## Example Application
 
 This video demonstrates an example of waypoint-following in action:
 
