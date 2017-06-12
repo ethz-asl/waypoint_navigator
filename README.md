@@ -162,7 +162,7 @@ This video demonstrates an example of waypoint-following in action:
 " target="_blank"><img src="http://i.imgur.com/LZIlwb5.png" 
 alt="Demonstration video" width="600" border="10"/></a></p>
 
-## Notes:
+## Notes
 Path generation:
 * Path to execute can be generated for a polygon using ['polycoverage'] (https://bitbucket.org/raghavkhanna/polycoverage) Python script.
 
