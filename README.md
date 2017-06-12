@@ -133,7 +133,7 @@ This package can be used with any MAV interfaced to our [MPC](https://github.com
  $ rosservice call /firefly/visualize_path
  ```
    
-   Using the configuration in the ``viz`` folder, you should now be able to see your loaded trajectory displayed in ``rviz``.
+  Using the configuration in the ``viz`` folder, you should now be able to see your loaded trajectory displayed in ``rviz``.
    
 5. In a new command window, type:
 
@@ -141,5 +141,4 @@ This package can be used with any MAV interfaced to our [MPC](https://github.com
  $ rosservice call /firefly/execute_path
  ```
  
-  This begins execution of the path that was read from the file. You should see the MAV moving along the path.
-
+ This begins execution of the path that was read from the file. You should see the MAV moving along the path.
