@@ -154,6 +154,14 @@ Example visualization of a partially executed serpentine GPS trajectory on a sug
 
 ![](http://i68.tinypic.com/301hrht.png)
 
+## Example application
+
+This video demonstrates an example of waypoint-following in action:
+
+<p align="center"><a href="https://www.youtube.com/watch?v=6i6aE--n5TY&feature=youtu.be
+" target="_blank"><img src="http://i.imgur.com/LZIlwb5.png" 
+alt="Demonstration video" width="600" border="10"/></a></p>
+
 ## Notes:
 Path generation:
 * Path to execute can be generated for a polygon using ['polycoverage'] (https://bitbucket.org/raghavkhanna/polycoverage) Python script.
