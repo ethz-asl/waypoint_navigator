@@ -6,7 +6,7 @@ This repository contains high-level waypoint-following for micro aerial vehicles
 GPS/ENU co-ordinates are accepted as input destinations, and an illustrative example is provided in the [RotorS](https://github.com/ethz-asl/rotors_simulator/wiki) simulator.
 This README provides a brief overview of the package and its utilities.
 
-**Authors**: Marija Popović, Enric Galceran  
+**Authors**: Marija Popović, Enric Galceran, Raghav Khanna, Inkyu Sa
 **Maintainer**: Marija Popović, mpopovic@ethz.ch  
 **Affiliation**: Autonomous Systems Lab, ETH Zurich
 
@@ -114,7 +114,7 @@ This package can be used with any MAV interfaced to our [MPC](https://github.com
  $ roslaunch waypoint_navigator mav_sim.launch
  ```
  
-  By default, this launches the Gazebo RotorS simulator with AscTec Firefly MAV with GPS and IMU sensors. See mav_simulator_demos for details about this file. For real-life experiments, replace this launch file with one featuring the start-up nodes for your MAV.
+  By default, this launches the Gazebo RotorS simulator with AscTec Firefly MAV with GPS and IMU sensors. See mav_simulator_demos for details about this file. For real-life experiments, replace this launch file with one featuring the on-board start-up nodes for your MAV. Remember to ensure time synchronization.
   > **Note**: For GPS, we use the [geodetic_utils](https://github.com/ethz-asl/geodetic_utils) package to establish a GPS reference point for the local frame. These parameters are set on the ROS parameter server: `/gps_ref_latitude`, `/gps_ref_longitude`, `/gps_ref_altitude`.
   
 2. If using GPS, wait for it to be initialized.
@@ -133,7 +133,7 @@ This package can be used with any MAV interfaced to our [MPC](https://github.com
  $ rosservice call /firefly/visualize_path
  ```
    
-  Using the configuration in the ``viz`` folder, you should now be able to see your loaded trajectory displayed in ``rviz``.
+  Using the configuration in the ``viz`` folder, you should now be able to see your loaded trajectory displayed in ``rviz``. Here, `firefly` is the MAV name and `waypoint_navigator` node namespace.
    
 5. In a new command window, type:
 
@@ -142,3 +142,24 @@ This package can be used with any MAV interfaced to our [MPC](https://github.com
  ```
  
  This begins execution of the path that was read from the file. You should see the MAV moving along the path.
+
+## .viz configs
+The configuration files in the `viz` directory can be loaded directly into rviz. As an example, we provide `waypoint_navigator_sim.viz` which can be used with the `firefly` simulation. The topics can be remapped for your MAV namespace directly.
+
+> **Optional**: For GPS waypoints, the `AerialMapDisplay` tool from [rviz_satellite](https://github.com/gareth-cross/rviz_satellite) scan be used to render aerial imagery tiles from [MapBox](https://www.mapbox.com/) for visualization. Please consult the README in the repository for detailed instructions on how to use this tool.
+
+Example visualization of a partially executed serpentine GPS trajectory on a sugarbeet field in Lindeau-Eschikon, Switzerland (click on images to see detail).
+
+![](http://i63.tinypic.com/33z4etg.png)
+
+![](http://i68.tinypic.com/301hrht.png)
+
+## Notes:
+Path generation:
+* Path to execute can be generated for a polygon using ['polycoverage'] (https://bitbucket.org/raghavkhanna/polycoverage) Python script.
+
+Co-ordinate systems:
+* [WGS84](https://en.wikipedia.org/wiki/World_Geodetic_System) - Global Positioning System  - [latitude, longtitude, height]
+If using a GPS .txt path, initial GPS co-ordinates in file should be the same as the reference parameters specified in mav_simulator_demos/mav_simulator_demos_src/descriptions/firefly_base_gps.xacro for the GPS plug-in.
+* [ECEF](https://en.wikipedia.org/wiki/ECEF) - Earth-Centred, Earth-Fixed - [x,y,z] in Earth frame
+* [ENU](https://en.wikipedia.org/wiki/Axes_conventions#Ground_reference_frames:_ENU_and_NED)   - East, North, Up            - [x,y,z] in local frame
