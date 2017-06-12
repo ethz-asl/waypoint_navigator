@@ -6,8 +6,8 @@ This repository contains high-level waypoint-following for micro aerial vehicles
 GPS/ENU co-ordinates are accepted as input destinations, and an illustrative example is provided in the [RotorS](https://github.com/ethz-asl/rotors_simulator/wiki) simulator.
 This README provides a brief overview of the package and its utilities.
 
-**Authors**: Marija Popović , Enric Galceran  
-**Maintainer**: Marija Popovic, mpopovic@ethz.ch  
+**Authors**: Marija Popović, Enric Galceran  
+**Maintainer**: Marija Popović, mpopovic@ethz.ch  
 **Affiliation**: Autonomous Systems Lab, ETH Zurich
 
 ## Installation Instructions
