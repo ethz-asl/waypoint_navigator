@@ -8,7 +8,7 @@ This README provides a brief overview of the package and its utilities.
 
 Please feel free to contact us in case of questions, feedback, or feature ideas. We would love to hear your feedback in order to improve this package.
 
-**Authors**: Marija Popović, Enric Galceran, Raghav Khanna, Inkyu Sa
+**Authors**: Marija Popović, Enric Galceran, Raghav Khanna, Inkyu Sa  
 **Maintainer**: Marija Popović, mpopovic@ethz.ch  
 **Affiliation**: Autonomous Systems Lab, ETH Zurich
 
