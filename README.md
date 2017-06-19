@@ -50,7 +50,7 @@ source ~/.bashrc
 4. Use [catkin_build](http://catkin-tools.readthedocs.io/en/latest/verbs/catkin_build.html) to build the repository:
 
 ```
-catkin_build
+catkin build
 ```
 
 ## Node: waypoint_navigator
@@ -118,7 +118,7 @@ This package can be used with any MAV interfaced to our [MPC](https://github.com
  $ roslaunch waypoint_navigator mav_sim.launch
  ```
  
-  By default, this launches the Gazebo RotorS simulator with AscTec Firefly MAV with GPS and IMU sensors. See mav_simulator_demos for details about this file. For real-life experiments, replace this launch file with one featuring the on-board start-up nodes for your MAV. Remember to ensure time synchronization.
+  By default, this launches the Gazebo RotorS simulator with AscTec Firefly MAV with GPS and IMU sensors. See `descriptions/firefly_base_gps.xacro` for details about this file. For real-life experiments, replace this launch file with one featuring the on-board start-up nodes for your MAV. Remember to ensure time synchronization.
   > **Note**: For GPS, we use the [geodetic_utils](https://github.com/ethz-asl/geodetic_utils) package to establish a GPS reference point for the local frame. These parameters are set on the ROS parameter server: `/gps_ref_latitude`, `/gps_ref_longitude`, `/gps_ref_altitude`.
   
 2. If using GPS, wait for it to be initialized.
