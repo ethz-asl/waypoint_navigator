@@ -86,6 +86,10 @@ catkin_build
 * `/land` - land to a height specified in the .yaml file at the current (x,y) position
 * `/abort_path` - stop executing mission and stay in place
 
+ > Note: Example request format for a call to `/go_to_waypoints`: `rosservice call /firefly/go_to_waypoints "points: [{x: 3.0, y: 6.0, z: 2.0}, {x: 2.0, y: 9.2, z: 2.1}]"`
+ 
+ > Note: The services `/go_to_waypoint` and `/go_to_waypoints` can be used to command the UAV to go to a target (x,y,z). The heading is set to in either the direction of the next waypoint or 0.0, depending on the mode specified in the initial file ('auto' for the former, 'fixed' or 'zero' for the latter).
+
 ## Input Format
 
 The primary function of this package is to read a path (list of waypoints) from a .yaml file, and send commands to execute it to a [Model Predictive Controller](https://github.com/ethz-asl/mav_control_rw) (MPC). The file also contains parameters for trajectory generation (reference speed, reference acceleration, etc.) and other services (take-off height, landing height, etc.). The intermediate_pose_separation parameter, which specifies the maximum allowable distance between waypoints in the trajectory, causing intermediate points to be interpolated. Template examples of trajectories are `trajectory_simple_enu.yaml` and `trajectory_simple_gps.yaml`.
