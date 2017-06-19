@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>waypoint_navigator</name>
+  <version>2.0.0</version>
+  <description>Waypoint Navigator for ENU/GPS Trajectories</description>
+
+  <maintainer email="mpopovic@ethz.ch">Marija Popovic</maintainer>
+
+  <author>Marija Popovic</author>
+  <author>Enric Galceran</author>
+
+  <license>ASL 2.0</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>catkin_simple</buildtool_depend>
+
+  <depend>cmake_modules</depend>
+  <depend>glog_catkin</depend>
+  <depend>geodetic_utils</depend>
+  <depend>geometry_msgs</depend>
+  <depend>mav_msgs</depend>
+  <depend>mav_trajectory_generation_ros</depend>
+  <depend>message_generation</depend>
+  <depend>message_runtime</depend>
+  <depend>planning_msgs</depend>
+  <depend>roscpp</depend>
+  <depend>roslib</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+</package>
