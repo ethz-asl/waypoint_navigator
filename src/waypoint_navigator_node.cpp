@@ -356,9 +356,9 @@ void WaypointNavigatorNode::publishCommands() {
     createTrajectory();
     // Publish the trajectory directly to the trajectory sampler.
     planning_msgs::PolynomialTrajectory4D msg;
-    mav_trajectory_generation::Trajectory traj_with_yaw =
-        polynomial_trajectory_.getTrajectoryWithAppendedDimension(
-            yaw_trajectory_);
+    mav_trajectory_generation::Trajectory traj_with_yaw;
+    polynomial_trajectory_.getTrajectoryWithAppendedDimension(yaw_trajectory_,
+                                                              &traj_with_yaw);
     mav_trajectory_generation::trajectoryToPolynomialTrajectoryMsg(
         traj_with_yaw, &msg);
     path_segments_publisher_.publish(msg);
@@ -662,9 +662,9 @@ void WaypointNavigatorNode::visualizationTimerCallback(const ros::TimerEvent&) {
   path_marker_publisher_.publish(path_marker);
 
   if (path_mode_ == "polynomial") {
-    mav_trajectory_generation::Trajectory traj_with_yaw =
-        polynomial_trajectory_.getTrajectoryWithAppendedDimension(
-            yaw_trajectory_);
+    mav_trajectory_generation::Trajectory traj_with_yaw;
+    polynomial_trajectory_.getTrajectoryWithAppendedDimension(yaw_trajectory_,
+                                                              &traj_with_yaw);
     mav_trajectory_generation::drawMavTrajectory(traj_with_yaw, 1.0, frame_id_,
                                                  &markers_);
     polynomial_publisher_.publish(markers_);
