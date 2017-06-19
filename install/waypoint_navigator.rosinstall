@@ -1,0 +1,8 @@
+
+- git: {local-name: geodetic_utils, uri: 'git@github.com:ethz-asl/geodetic_utils.git'}
+- git: {local-name: mav_comm, uri: 'git@github.com:ethz-asl/mav_comm.git'}
+- git: {local-name: mav_trajectory_generation, uri: 'git@github.com:ethz-asl/mav_trajectory_generation.git'}
+- git: {local-name: mav_control_rw, uri: 'git@github.com:ethz-asl/mav_control_rw.git'}
+- git: {local-name: glog_catkin, uri: 'git@github.com:ethz-asl/glog_catkin.git'}
+- git: {local-name: hector_gazebo, uri: 'git@github.com:tu-darmstadt-ros-pkg/hector_gazebo.git'}
+- git: {local-name: rotors_simulator, uri: 'git@github.com:ethz-asl/rotors_simulator.git'}

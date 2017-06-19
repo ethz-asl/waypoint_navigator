@@ -1,0 +1,11 @@
+# GPS/ENU trajectory to be read and executed by waypoint_navigator
+
+# Format of coordinates ('gps'/'enu')
+coordinate_type: 'gps'
+
+# Trajectory
+easting: [8.571654, 8.571685, 8.571651, 8.571654] # x (ENU) [m] / longitude (GPS) [deg]
+northing: [47.381180, 47.381169, 47.381161, 47.381180] # y (ENU) [m] / latitude (GPS) [deg]
+height: [1.0, 1.0, 1.0, 1.0] # z (ENU) [m] / altitude (GPS) [m]
+heading: [0.0, 0.0, 0.0, 0.0] # Heading [deg]
+waiting_time: [0.0, 0.0, 0.0, 0.0] # Waiting time at each waypoint [s]

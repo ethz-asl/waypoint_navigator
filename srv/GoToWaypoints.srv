@@ -1,0 +1,3 @@
+# Message to specify a sequence of [x,y,z] waypoints to navigate to
+geometry_msgs/Point[] points
+---

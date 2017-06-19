@@ -1,0 +1,3 @@
+# Message to specify height to navigate to in current x-y position
+std_msgs/Float64 height
+---

@@ -1,0 +1,37 @@
+# Example path with ENU co-ordinates
+
+# Format of coordinates ('gps'/'enu')
+coordinate_type: 'enu'
+
+# Method of sending commands to controller ('poses'/'polynomial' trajectory)
+path_mode: 'polynomial'
+
+# Limit distance between poses ('true'/'false')
+intermediate_poses: true
+# Maximum distance between poses [m]
+intermediate_pose_separation: 1.0
+
+# Maximum speed [m/s] and acceleration [m/s^2]
+reference_speed: 0.5
+reference_acceleration: 1.0
+
+# Height for takeoff command [m]
+takeoff_height: 1.0
+# Height for landing command [m]
+landing_height: -0.5
+
+# Heading mode ('auto'/'manual'/'zero')
+# 'auto': faces in the direction of travel
+# 'manual': user-specified (below)
+# 'zero': heading is zero for entire trajectory
+heading_mode: 'zero'
+
+# Trajectory
+# x (ENU) [m] / longitude (GPS) [deg]
+easting: [0, 3.0, 3.0, 0]
+# y (ENU) [m] / latitude (GPS) [deg]
+northing: [-3.0, -3.0, 0, 0]
+# z (ENU) [m] / altitude (GPS) [m]
+height: [1.0, 1.0, 1.0, 1.0]
+# Heading [deg]
+heading: [30.0, 80.0, 10.0, -30.0]

@@ -1,0 +1,19 @@
+# GPS/ENU trajectory to be read and executed by waypoint_navigator
+
+# Format of coordinates ('gps'/'enu')
+coordinate_type: 'enu'
+
+# Topic to publish command messages to ('trajectory'/'poses')
+path_mode: 'poses'
+
+# Trajectory
+# x (ENU) [m] / longitude (GPS) [deg]
+easting: [0.0]
+# y (ENU) [m] / latitude (GPS) [deg]
+northing: [0.0]
+# z (ENU) [m] / altitude (GPS) [m]
+height: [0.5]
+# Heading [deg]
+heading: [0.0]
+# Waiting time at each waypoint [s]
+waiting_time: [0.0]

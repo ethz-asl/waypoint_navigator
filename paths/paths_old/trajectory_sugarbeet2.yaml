@@ -1,0 +1,43 @@
+# GPS/ENU trajectory to be read and executed by waypoint_navigator
+# Format of coordinates ('gps'/'enu')
+coordinate_type: 'gps'
+
+# Topic to publish command messages to ('trajectory'/'poses'/'polynomial')
+path_mode: 'polynomial'
+
+# Limit distance between poses (true/false)
+intermediate_poses: true
+# Maximum distance between poses [m]
+intermediate_pose_separation: 2.0
+
+# Distance before target waypoint has been "reached" [m]
+waypoint_achievement_distance: 0.5
+
+# Maximum speed [m/s] and acceleration [m/s^2]
+reference_speed: 1.5
+reference_acceleration: 1
+
+# Height for takeoff command [m]
+takeoff_height: 0.8
+# Height for landing command [m]
+landing_height: -0.5
+
+# Heading mode ('auto'/'manual'/'fixed')
+# 'auto': faces in the direction of travel
+# 'manual': user-specified (below)
+# 'fixed': heading is zero for entire trajectory
+heading_mode: 'fixed'
+
+# Trajectory
+# x (ENU) [m] / longitude (GPS) [deg]
+easting: [8.680654, 8.680942, 8.681043, 8.680707, 8.680760, 8.681084]
+# y (ENU) [m] / latitude (GPS) [deg]
+northing: [47.453328, 47.453427, 47.453331, 47.453249, 47.453166, 47.453265]
+# z (ENU) [m] / altitude (GPS) [m]
+height: [1.2, 1.2, 1.2, 1.2, 1.2, 1.2]
+# Heading [deg]
+heading: [30.0, 30.0, 30.0, 30.0, 30.0, 30.0]
+# Waiting time at each waypoint [s]
+waiting_time: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+

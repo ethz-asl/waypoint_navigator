@@ -1,0 +1,3 @@
+# Message to specify .yaml mission file to load
+std_msgs/String filename
+---
