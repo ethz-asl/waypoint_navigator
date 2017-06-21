@@ -389,6 +389,7 @@ bool WaypointNavigatorNode::executePathCallback(
 
   publishCommands();
   LOG(INFO) << "Starting path execution...";
+  return true;
 }
 
 bool WaypointNavigatorNode::executePathFromFileCallback(
