@@ -175,3 +175,10 @@ Co-ordinate systems:
 If using a GPS .txt path, initial GPS co-ordinates in file should be the same as the reference parameters specified in mav_simulator_demos/mav_simulator_demos_src/descriptions/firefly_base_gps.xacro for the GPS plug-in.
 * [ECEF](https://en.wikipedia.org/wiki/ECEF) - Earth-Centred, Earth-Fixed - [x,y,z] in Earth frame
 * [ENU](https://en.wikipedia.org/wiki/Axes_conventions#Ground_reference_frames:_ENU_and_NED)   - East, North, Up            - [x,y,z] in local frame
+
+## Acknowledgement
+
+This work was funded by the European Community’s Horizon 2020 programme under grant agreement no 644227-Flourish and from the Swiss State Secretariat for Education, Research and Innovation (SERI) under contract number 15.0029.  
+http://flourish-project.eu
+
+<p align="center"><img src="http://flourish-project.eu/fileadmin/bsdist/theme/img/flourish-logo-v5.svg" width="200" /></p>
