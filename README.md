@@ -167,9 +167,6 @@ This video demonstrates an example of waypoint-following in action:
 alt="Demonstration video" width="600" border="10"/></a></p>
 
 ## Notes
-Path generation:
-* Path to execute can be generated for a polygon using tools from ['mav_coverage_planning'](https://github.com/ethz-asl/mav_pathplanning/tree/master/mav_coverage_planning).
-
 Co-ordinate systems:
 * [WGS84](https://en.wikipedia.org/wiki/World_Geodetic_System) - Global Positioning System  - [latitude, longtitude, height]
 If using a GPS .txt path, initial GPS co-ordinates in file should be the same as the reference parameters specified in mav_simulator_demos/mav_simulator_demos_src/descriptions/firefly_base_gps.xacro for the GPS plug-in.
