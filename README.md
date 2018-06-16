@@ -168,7 +168,7 @@ alt="Demonstration video" width="600" border="10"/></a></p>
 
 ## Notes
 Path generation:
-* Path to execute can be generated for a polygon using ['polycoverage'](https://bitbucket.org/raghavkhanna/polycoverage) Python script.
+* Path to execute can be generated for a polygon using tools from ['mav_coverage_planning'](https://github.com/ethz-asl/mav_pathplanning/tree/master/mav_coverage_planning).
 
 Co-ordinate systems:
 * [WGS84](https://en.wikipedia.org/wiki/World_Geodetic_System) - Global Positioning System  - [latitude, longtitude, height]
