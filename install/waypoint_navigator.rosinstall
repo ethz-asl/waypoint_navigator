@@ -6,3 +6,6 @@
 - git: {local-name: glog_catkin, uri: 'git@github.com:ethz-asl/glog_catkin.git'}
 - git: {local-name: hector_gazebo, uri: 'git@github.com:tu-darmstadt-ros-pkg/hector_gazebo.git'}
 - git: {local-name: rotors_simulator, uri: 'git@github.com:ethz-asl/rotors_simulator.git'}
+- git: {local-name: eigen_checks, uri: 'git@github.com:ethz-asl/eigen_checks.git'}
+- git: {local-name: eigen_catkin, uri: 'git@github.com:ethz-asl/eigen_catkin.git'}
+- git: {local-name: nlopt, uri: 'git@github.com:ethz-asl/nlopt.git'}
