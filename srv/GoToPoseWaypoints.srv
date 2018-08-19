@@ -1,0 +1,4 @@
+# Message to specify a sequence of poses waypoints to navigate to
+geometry_msgs/Pose[] waypoints
+std_msgs/String mission_id
+---

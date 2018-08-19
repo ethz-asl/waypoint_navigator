@@ -83,6 +83,8 @@ WaypointNavigatorNode::WaypointNavigatorNode(const ros::NodeHandle& nh,
       "go_to_waypoint", &WaypointNavigatorNode::goToWaypointCallback, this);
   waypoints_service_ = nh_.advertiseService(
       "go_to_waypoints", &WaypointNavigatorNode::goToWaypointsCallback, this);
+  pose_waypoints_service_ = nh_.advertiseService(
+      "go_to_pose_waypoints", &WaypointNavigatorNode::goToPoseWaypointsCallback, this);
   height_service_ = nh_.advertiseService(
       "go_to_height", &WaypointNavigatorNode::goToHeightCallback, this);
 
@@ -489,6 +491,39 @@ bool WaypointNavigatorNode::goToWaypointsCallback(
     }
   }
 
+  // Display the path markers in rviz.
+  visualization_timer_ =
+      nh_.createTimer(ros::Duration(0.1),
+                      &WaypointNavigatorNode::visualizationTimerCallback, this);
+  publishCommands();
+  return true;
+}
+
+bool WaypointNavigatorNode::goToPoseWaypointsCallback(
+    waypoint_navigator::GoToPoseWaypoints::Request& request,
+    waypoint_navigator::GoToPoseWaypoints::Response& response) {
+  coarse_waypoints_.clear();
+  current_leg_ = 0;
+  timer_counter_ = 0;
+  command_timer_.stop();
+
+  addCurrentOdometryWaypoint();
+
+  // Add points to a new path.
+  std::vector<geometry_msgs::Pose> waypoints = request.waypoints;
+  mav_msgs::EigenTrajectoryPoint vwp;
+  for (size_t i = 0; i < waypoints.size(); ++i) {
+    vwp.position_W.x() = waypoints[i].position.x;
+    vwp.position_W.y() = waypoints[i].position.y;
+    vwp.position_W.z() = waypoints[i].position.z;
+
+    vwp.orientation_W_B.x() = waypoints[i].orientation.x;
+    vwp.orientation_W_B.y() = waypoints[i].orientation.y;
+    vwp.orientation_W_B.z() = waypoints[i].orientation.z;
+    vwp.orientation_W_B.w() = waypoints[i].orientation.w;
+    coarse_waypoints_.push_back(vwp);
+  }
+  
   // Display the path markers in rviz.
   visualization_timer_ =
       nh_.createTimer(ros::Duration(0.1),
