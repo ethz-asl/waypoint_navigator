@@ -90,13 +90,13 @@ class WaypointNavigatorNode {
   bool goToWaypointCallback(
       waypoint_navigator::GoToWaypoint::Request& request,
       waypoint_navigator::GoToWaypoint::Response& response);
-  // Goes to a custom sequence of(x,y,z,yaw) waypoints.
+  // Goes to a custom sequence of(x,y,z) waypoints.
   // Note: Does not add intermediate poses.
   bool goToWaypointsCallback(
       waypoint_navigator::GoToWaypoints::Request& request,
       waypoint_navigator::GoToWaypoints::Response& response);
 
-  // Goes to a custom sequence of(x,y,z) waypoints.
+  // Goes to a custom sequence of Pose waypoints, but only yaw is used.
   // Note: Does not add intermediate poses.
   bool goToPoseWaypointsCallback(
       waypoint_navigator::GoToPoseWaypoints::Request& request,
