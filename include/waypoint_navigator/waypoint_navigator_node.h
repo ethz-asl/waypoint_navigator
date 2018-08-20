@@ -44,6 +44,7 @@
 #include <waypoint_navigator/GoToHeight.h>
 #include <waypoint_navigator/GoToWaypoint.h>
 #include <waypoint_navigator/GoToWaypoints.h>
+#include <waypoint_navigator/GoToPoseWaypoints.h>
 
 namespace waypoint_navigator {
 class WaypointNavigatorNode {
@@ -94,6 +95,14 @@ class WaypointNavigatorNode {
   bool goToWaypointsCallback(
       waypoint_navigator::GoToWaypoints::Request& request,
       waypoint_navigator::GoToWaypoints::Response& response);
+
+  // Goes to a custom sequence of Pose waypoints, but only yaw is used.
+  // Note: Does not add intermediate poses.
+  bool goToPoseWaypointsCallback(
+      waypoint_navigator::GoToPoseWaypoints::Request& request,
+      waypoint_navigator::GoToPoseWaypoints::Response& response);
+
+
   // Goes to a specific height with current x-y position.
   bool goToHeightCallback(waypoint_navigator::GoToHeight::Request& request,
                           waypoint_navigator::GoToHeight::Response& response);
@@ -150,6 +159,7 @@ class WaypointNavigatorNode {
   ros::ServiceServer new_path_service_;
   ros::ServiceServer waypoint_service_;
   ros::ServiceServer waypoints_service_;
+  ros::ServiceServer pose_waypoints_service_;
   ros::ServiceServer height_service_;
 
   ros::Timer command_timer_;
