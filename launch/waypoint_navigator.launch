@@ -4,7 +4,7 @@
 
   <group ns="$(arg namespace)">
     <node name="waypoint_navigator_node" pkg="waypoint_navigator" type="waypoint_navigator_node"  respawn="true" clear_params="true" output="screen">
-      <rosparam file="$(find waypoint_navigator)/paths/trajectory_simple_enu.yaml"/>
+      <rosparam file="$(find waypoint_navigator)/paths/trajectory_simple_field.yaml"/>
       <param name="mav_name" type="string" value="$(arg namespace)" />
       <param name="frame_id" type="string" value="world" />
       <!-- Real -->
