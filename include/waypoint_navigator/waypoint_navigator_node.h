@@ -29,7 +29,7 @@
 #include <mav_trajectory_generation_ros/ros_conversions.h>
 #include <mav_trajectory_generation_ros/ros_visualization.h>
 #include <nav_msgs/Path.h>
-#include <planning_msgs/PolynomialTrajectory4D.h>
+#include <mav_planning_msgs/PolynomialTrajectory4D.h>
 #include <ros/callback_queue.h>
 #include <ros/ros.h>
 #include <std_srvs/Empty.h>
@@ -128,8 +128,6 @@ class WaypointNavigatorNode {
   static const double kCommandTimerFrequency;
   // Distance before a waypoint is considered reached [m].
   static const double kWaypointAchievementDistance;
-  // Tuning parameter for time allocation.
-  static const double kFabianConstant;
   // Minimum distance between intermediate waypoints [m].
   static const double kIntermediatePoseTolerance;
   // Number of dimensions in the problem.

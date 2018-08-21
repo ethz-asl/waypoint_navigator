@@ -35,7 +35,6 @@
 namespace waypoint_navigator {
 const double WaypointNavigatorNode::kCommandTimerFrequency = 5.0;
 const double WaypointNavigatorNode::kWaypointAchievementDistance = 0.5;
-const double WaypointNavigatorNode::kFabianConstant = 6.5;
 const double WaypointNavigatorNode::kIntermediatePoseTolerance = 0.1;
 const int WaypointNavigatorNode::kDimensions = 3;
 const int WaypointNavigatorNode::kDerivativeToOptimize =
@@ -56,7 +55,7 @@ WaypointNavigatorNode::WaypointNavigatorNode(const ros::NodeHandle& nh,
   pose_publisher_ = nh_.advertise<geometry_msgs::PoseStamped>(
       mav_msgs::default_topics::COMMAND_POSE, 1);
   path_segments_publisher_ =
-      nh_.advertise<planning_msgs::PolynomialTrajectory4D>("path_segments", 1);
+      nh_.advertise<mav_planning_msgs::PolynomialTrajectory4D>("path_segments", 1);
 
   // Visualization.
   path_points_marker_publisher_ = nh_.advertise<visualization_msgs::Marker>(
@@ -333,7 +332,7 @@ void WaypointNavigatorNode::createTrajectory() {
   std::vector<double> segment_times;
   segment_times =
       estimateSegmentTimes(polynomial_vertices_, reference_speed_,
-                           reference_acceleration_, kFabianConstant);
+                           reference_acceleration_);
   mav_trajectory_generation::PolynomialOptimization<kPolynomialCoefficients>
       opt(kDimensions);
   opt.setupFromVertices(polynomial_vertices_, segment_times,
@@ -357,7 +356,7 @@ void WaypointNavigatorNode::publishCommands() {
   } else if (path_mode_ == "polynomial") {
     createTrajectory();
     // Publish the trajectory directly to the trajectory sampler.
-    planning_msgs::PolynomialTrajectory4D msg;
+    mav_planning_msgs::PolynomialTrajectory4D msg;
     mav_trajectory_generation::Trajectory traj_with_yaw;
     polynomial_trajectory_.getTrajectoryWithAppendedDimension(yaw_trajectory_,
                                                               &traj_with_yaw);
