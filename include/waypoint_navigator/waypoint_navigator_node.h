@@ -29,7 +29,7 @@
 #include <mav_trajectory_generation_ros/ros_conversions.h>
 #include <mav_trajectory_generation_ros/ros_visualization.h>
 #include <nav_msgs/Path.h>
-#include <planning_msgs/PolynomialTrajectory4D.h>
+#include <mav_planning_msgs/PolynomialTrajectory4D.h>
 #include <ros/callback_queue.h>
 #include <ros/ros.h>
 #include <std_srvs/Empty.h>
@@ -44,6 +44,7 @@
 #include <waypoint_navigator/GoToHeight.h>
 #include <waypoint_navigator/GoToWaypoint.h>
 #include <waypoint_navigator/GoToWaypoints.h>
+#include <waypoint_navigator/GoToPoseWaypoints.h>
 
 namespace waypoint_navigator {
 class WaypointNavigatorNode {
@@ -94,6 +95,14 @@ class WaypointNavigatorNode {
   bool goToWaypointsCallback(
       waypoint_navigator::GoToWaypoints::Request& request,
       waypoint_navigator::GoToWaypoints::Response& response);
+
+  // Goes to a custom sequence of Pose waypoints, but only yaw is used.
+  // Note: Does not add intermediate poses.
+  bool goToPoseWaypointsCallback(
+      waypoint_navigator::GoToPoseWaypoints::Request& request,
+      waypoint_navigator::GoToPoseWaypoints::Response& response);
+
+
   // Goes to a specific height with current x-y position.
   bool goToHeightCallback(waypoint_navigator::GoToHeight::Request& request,
                           waypoint_navigator::GoToHeight::Response& response);
@@ -119,8 +128,6 @@ class WaypointNavigatorNode {
   static const double kCommandTimerFrequency;
   // Distance before a waypoint is considered reached [m].
   static const double kWaypointAchievementDistance;
-  // Tuning parameter for time allocation.
-  static const double kFabianConstant;
   // Minimum distance between intermediate waypoints [m].
   static const double kIntermediatePoseTolerance;
   // Number of dimensions in the problem.
@@ -150,6 +157,7 @@ class WaypointNavigatorNode {
   ros::ServiceServer new_path_service_;
   ros::ServiceServer waypoint_service_;
   ros::ServiceServer waypoints_service_;
+  ros::ServiceServer pose_waypoints_service_;
   ros::ServiceServer height_service_;
 
   ros::Timer command_timer_;
