@@ -333,6 +333,7 @@ void WaypointNavigatorNode::createTrajectory() {
   segment_times =
       estimateSegmentTimes(polynomial_vertices_, reference_speed_,
                            reference_acceleration_);
+
   mav_trajectory_generation::PolynomialOptimization<kPolynomialCoefficients>
       opt(kDimensions);
   opt.setupFromVertices(polynomial_vertices_, segment_times,
@@ -506,8 +507,6 @@ bool WaypointNavigatorNode::goToPoseWaypointsCallback(
   timer_counter_ = 0;
   command_timer_.stop();
 
-  addCurrentOdometryWaypoint();
-
   // Add points to a new path.
   std::vector<geometry_msgs::Pose> waypoints = request.waypoints;
   mav_msgs::EigenTrajectoryPoint vwp;
@@ -520,14 +519,34 @@ bool WaypointNavigatorNode::goToPoseWaypointsCallback(
     vwp.orientation_W_B.y() = waypoints[i].orientation.y;
     vwp.orientation_W_B.z() = waypoints[i].orientation.z;
     vwp.orientation_W_B.w() = waypoints[i].orientation.w;
+
+    if (i==0)
+    {
+      const double dist_to_end =
+        (vwp.position_W - odometry_.position_W).norm();
+          
+      if (dist_to_end > kWaypointAchievementDistance) {
+        LOG(INFO) << "Extra waypoint added because current pose is too far (" << dist_to_end << "m) from the first waypoint.";
+        addCurrentOdometryWaypoint();
+      }
+    }
+
     coarse_waypoints_.push_back(vwp);
   }
-  
-  // Display the path markers in rviz.
-  visualization_timer_ =
+
+  if(coarse_waypoints_.size() > 1)
+  {
+    LOG(INFO) << coarse_waypoints_.size()<<" waypoints received.";
+    // Display the path markers in rviz.
+    visualization_timer_ =
       nh_.createTimer(ros::Duration(0.1),
                       &WaypointNavigatorNode::visualizationTimerCallback, this);
-  publishCommands();
+    publishCommands();
+  }else{
+    LOG(INFO) << " Nothing to do because the destination is too close.";
+    return false;
+  }
+
   return true;
 }
 
