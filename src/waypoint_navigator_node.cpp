@@ -595,7 +595,7 @@ bool WaypointNavigatorNode::abortPathCallback(
     std_srvs::Empty::Request empty_request;
     std_srvs::Empty::Response empty_response;
     ros::ServiceClient client = nh_.serviceClient<std_srvs::Empty::Request>(
-        "/" + mav_name_ + "/stop_trajectory_sampling");
+        "/" + mav_name_ + "/stop_sampling");
     client.call(empty_request, empty_response);
   } else {
     command_timer_.stop();
